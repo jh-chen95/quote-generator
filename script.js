@@ -45,17 +45,16 @@ async function getQuotes() {
     const apiUrl = "https://type.fit/api/quotes";
     try {
         const response = await fetch(apiUrl);
-        // taking JSON as input and parsing it to produce a JavaScript object
         apiQuotes = await response.json(); 
         newQuote();
     } catch (error) {
         // catch error here
+        console.error("Error：", error);
     }
 }
 
 // tweet quote
 function tweetQuote() {
-    // use grave accent `` not single quote
     const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText.textContent} - ${authorText.textContent}`;
     window.open(twitterUrl, "_blank");
 }
